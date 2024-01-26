@@ -1,0 +1,23 @@
+@import-normalize;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --family: 'Roboto', sans-serif;
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fw-light: 300;
+  --fw-normal: 500;
+  --fw-bold: 900;
+
+  /* Other */
+  --radii: 0.5rem;
+}
+
+body {
+  margin: 0;
+  font-family: var(--family);
+  font-weight: var(--fw-light);
+}
