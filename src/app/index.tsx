@@ -1,10 +1,12 @@
 import React from 'react'
+import { Controls } from 'widgets/conrols'
+import { Header } from 'widgets/header'
 
 function App() {
   return (
     <div className="App">
-      <h1>1</h1>
-      123456
+      <Header />
+      <Controls />
     </div>
   )
 }
