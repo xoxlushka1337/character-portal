@@ -16,6 +16,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "types": ["node", "./src/your-other-types.d.ts", "./src/custom.d.ts"],
   },
   "include": ["src"],
 }

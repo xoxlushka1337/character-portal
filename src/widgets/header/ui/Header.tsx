@@ -2,30 +2,32 @@ import { Container } from 'shared/ui'
 import styled from 'styled-components'
 
 // import rickMortyImage from '../../shared/assets/images/rick_morty.png'
+import { rickMortyImage } from 'shared/assets'
 
 const HeaderEl = styled.header`
-  background-color: #71717bd6;
-  border-radius: 30px;
+  background-color: var(--background);
+  border-radius: var(--radii);
+  box-shadow: var(--shadow);
+  margin-top: 10px;
 `
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0;
+  padding: 0.5rem 0;
 `
 
-// const IconHeader = styled.image``
+const IconHeader = styled.img`
+  width: 200px;
+`
 
-const Title = styled.a.attrs({
-  href: '/',
-})`
-  font-size: var(--fs-sm);
+const Title = styled.div`
+  font-size: var(--fs-title);
   text-decoration: none;
   font-weight: var(--fw-bold);
+  color: var(--color-text);
 `
-
-const IconHeader = styled.div``
 
 export const Header = () => {
   return (
@@ -33,7 +35,7 @@ export const Header = () => {
       <Container>
         <Wrapper>
           <Title>Find your favorite character</Title>
-          <IconHeader></IconHeader>
+          <IconHeader src={rickMortyImage} alt="404" />
         </Wrapper>
       </Container>
     </HeaderEl>
