@@ -17,25 +17,12 @@ const Controls: React.FC<ControlsProps> = ({ setFilters }) => {
   const [valueSpecies, setValueSpecies] = useState<string>('')
 
   useEffect(() => {
-    const filters: any = {}
-
-    if (valueName) {
-      filters.name = valueName
-    }
-
-    if (valueStatus) {
-      filters.status = valueStatus
-    }
-
-    if (valueGender) {
-      filters.gender = valueGender
-    }
-
-    if (valueType) {
-      filters.type = valueType
-    }
-    if (valueSpecies) {
-      filters.species = valueSpecies
+    const filters = {
+      ...(valueName && { name: valueName }),
+      ...(valueStatus && { status: valueStatus }),
+      ...(valueGender && { gender: valueGender }),
+      ...(valueType && { type: valueType }),
+      ...(valueSpecies && { species: valueSpecies }),
     }
 
     setFilters(filters)
