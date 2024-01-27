@@ -13,8 +13,24 @@ export const charactersApi = createApi({
     getCharacters: builder.query({
       query: () => `/character`,
     }),
+    getCharactersName: builder.query({
+      query: (name) => `/character/?name=${name}`,
+    }),
+    getCharactersFilter: builder.query({
+      query: (options) => {
+        const queryString = Object.keys(options)
+          .filter((key) => options[key] !== undefined && options[key] !== null)
+          .map((key) => `${key}=${options[key]}`)
+          .join('&')
+        return `/character/?${queryString ? `${queryString}&` : ''}page=2`
+      },
+    }),
   }),
 })
 
 // Экспортируем хуки для использования в компонентах
-export const { useGetCharactersQuery } = charactersApi
+export const {
+  useGetCharactersQuery,
+  useGetCharactersNameQuery,
+  useGetCharactersFilterQuery,
+} = charactersApi

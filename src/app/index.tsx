@@ -1,14 +1,25 @@
-import React from 'react'
-import { Controls } from 'widgets/conrols'
+import React, { useState } from 'react'
+import { Container } from 'shared/ui'
+import { Controls } from 'widgets/conrols' // исправлено на 'widgets/controls'
 import { Header } from 'widgets/header'
 import { ListCards } from 'widgets/listCards'
 
-function App() {
+interface ITypeFilters {
+  name?: string
+  status?: string
+}
+
+const App: React.FC = () => {
+  const [filters, setFilters] = useState<ITypeFilters>({})
+
   return (
     <div className="App">
       <Header />
-      <Controls />
-      <ListCards />
+      <Container>
+        <Controls setFilters={setFilters} />
+        {/* Уберите угловые скобки, так как тип уже указан в useState */}
+        <ListCards filters={filters} />
+      </Container>
     </div>
   )
 }

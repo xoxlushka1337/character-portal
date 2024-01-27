@@ -1,6 +1,11 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
+interface SearchProps {
+  valueSearch: string
+  setValueSearch: any
+}
+
 const InputContainer = styled.label`
   background-color: #277322;
   padding: 1rem 2rem;
@@ -26,9 +31,7 @@ const Input = styled.input.attrs({
   color: white;
 `
 
-const Search = () => {
-  const [valueSearch, setValueSearch] = useState<string>('')
-
+const Search: React.FC<SearchProps> = ({ valueSearch, setValueSearch }) => {
   return (
     <InputContainer>
       <Input

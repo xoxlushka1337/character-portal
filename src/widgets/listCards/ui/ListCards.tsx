@@ -1,8 +1,30 @@
+import React from 'react'
 import { Card } from 'entities/card'
-import { useGetCharactersQuery } from 'shared/api/charactersApi'
+import {
+  useGetCharactersFilterQuery,
+  useGetCharactersQuery,
+} from 'shared/api/charactersApi'
 import { Character, CharactersData } from 'shared/model/type'
+import styled from 'styled-components'
 
-const ListCards = () => {
+interface ListCardsProps {
+  filters: {
+    name?: string
+    status?: string // Добавьте другие свойства, если необходимо
+  }
+}
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media (min-width: 767px) {
+    justify-content: space-between;
+  }
+`
+
+const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
   const {
     data: charactersData,
     error,
@@ -13,23 +35,30 @@ const ListCards = () => {
     isLoading?: boolean
   }
 
-  const characters: Character[] = charactersData.results
+  const { data: charactersDataFilter } = useGetCharactersFilterQuery(
+    filters,
+  ) as {
+    data: CharactersData
+  }
 
-  if (!isLoading) {
-    console.log(characters)
+  // const characters: Character[] = charactersData.results
+
+  if (filters) {
+    console.log(charactersDataFilter)
   }
 
   return !isLoading ? (
-    <div>
-      {characters.map((character) => (
+    <Container>
+      {charactersDataFilter.results.map((character) => (
         <Card
+          key={character.id}
           img={character.image}
           name={character.name}
           gender={character.gender}
           status={character.status}
         />
       ))}
-    </div>
+    </Container>
   ) : (
     <div className="">23456</div>
   )

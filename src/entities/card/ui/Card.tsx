@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-const Conteiner = styled.div``
-
 const Wrapper = styled.div``
 
 const Img = styled.img``
@@ -23,16 +21,14 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ img, name, gender, status }) => {
   return (
-    <Conteiner>
-      <Wrapper>
-        <Img src={img} alt="404"></Img>
-        <Text>
-          <Name>{name}</Name>
-          <Gender>{gender}</Gender>
-          <Status>{status}</Status>
-        </Text>
-      </Wrapper>
-    </Conteiner>
+    <Wrapper>
+      <Img src={img} alt="404"></Img>
+      <Text>
+        <Name>{name}</Name>
+        <Gender>{gender}</Gender>
+        <Status>{status}</Status>
+      </Text>
+    </Wrapper>
   )
 }
 
