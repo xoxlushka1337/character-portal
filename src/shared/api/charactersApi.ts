@@ -1,23 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-// Создаем API с базовым запросом fetchBaseQuery
-
 export const charactersApi = createApi({
   reducerPath: 'charactersApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://rickandmortyapi.com/api',
   }),
 
-  // Определяем точку конечную для запроса данных
   endpoints: (builder) => ({
-    getCharacters: builder.query({
-      query: () => `/character`,
-    }),
-    getCharactersName: builder.query({
-      query: (name) => `/character/?name=${name}`,
-    }),
     getCharactersFilter: builder.query({
       query: (options) => {
+        // Измените запрос, чтобы включить параметр страницы
         const queryString = Object.keys(options)
           .filter((key) => options[key] !== undefined && options[key] !== null)
           .map((key) => `${key}=${options[key]}`)
@@ -25,12 +17,31 @@ export const charactersApi = createApi({
         return `/character/?${queryString ? `${queryString}&` : ''}`
       },
     }),
+    // getAllCharacters: builder.query({
+    //   query: () => `/character`,
+    //   transformResponse: (response) => {
+    //     const allResults = response.results
+
+    //     if (response.info.next) {
+    //       return getAllPages(response.info.next, allResults)
+    //     }
+
+    //     return allResults
+    //   },
+    // }),
   }),
 })
 
-// Экспортируем хуки для использования в компонентах
-export const {
-  useGetCharactersQuery,
-  useGetCharactersNameQuery,
-  useGetCharactersFilterQuery,
-} = charactersApi
+// async function getAllPages(nextPageUrl, allResults) {
+//   const nextPageResponse = await fetch(nextPageUrl)
+//   const nextPageData = await nextPageResponse.json()
+//   const combinedResults = allResults.concat(nextPageData.results)
+
+//   if (nextPageData.info.next) {
+//     return getAllPages(nextPageData.info.next, combinedResults)
+//   }
+
+//   return combinedResults
+// }
+
+export const { useGetCharactersFilterQuery } = charactersApi

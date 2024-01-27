@@ -17,9 +17,10 @@ interface CardProps {
   name: string
   gender: string
   status: string
+  type: string
 }
 
-const Card: React.FC<CardProps> = ({ img, name, gender, status }) => {
+const Card: React.FC<CardProps> = ({ img, name, gender, status, type }) => {
   return (
     <Wrapper>
       <Img src={img} alt="404"></Img>
@@ -27,6 +28,7 @@ const Card: React.FC<CardProps> = ({ img, name, gender, status }) => {
         <Name>{name}</Name>
         <Gender>{gender}</Gender>
         <Status>{status}</Status>
+        <div className="">{type}</div>
       </Text>
     </Wrapper>
   )
