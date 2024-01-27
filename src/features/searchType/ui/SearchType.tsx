@@ -1,4 +1,4 @@
-import { SelectSearch } from 'entities/SelectSearch'
+import { SelectSearch } from 'entities/selectSearch'
 
 const SearchType = () => {
   return <SelectSearch searchKey="type" />
