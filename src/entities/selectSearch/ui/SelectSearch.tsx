@@ -10,9 +10,10 @@ import { useCharacterSearch } from '../lib'
 
 interface TypeSearchProps {
   searchKey: string
+  onSelect: (selectedOption: string) => void
 }
 
-const SelectSearch: React.FC<TypeSearchProps> = ({ searchKey }) => {
+const SelectSearch: React.FC<TypeSearchProps> = ({ searchKey, onSelect }) => {
   const {
     isOpen,
     searchTerm,
@@ -21,7 +22,7 @@ const SelectSearch: React.FC<TypeSearchProps> = ({ searchKey }) => {
     handleInputChange,
     handleSuggestionClick,
     filteredSuggestions,
-  } = useCharacterSearch(searchKey)
+  } = useCharacterSearch(searchKey, onSelect)
 
   return (
     <SearchContainer>

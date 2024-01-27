@@ -8,6 +8,9 @@ interface ListCardsProps {
   filters: {
     name?: string
     status?: string
+    gender?: string
+    type?: string
+    species?: string
   }
 }
 

@@ -1,7 +1,10 @@
 import { useEffect, useState, ChangeEvent } from 'react'
 import { useGetAllCharactersQuery } from 'shared/api/charactersApi'
 
-const useCharacterSearch = (searchKey: string) => {
+const useCharacterSearch = (
+  searchKey: string,
+  onSelect: (selectedOption: string) => void,
+) => {
   const [isOpen, setIsOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const [suggestions, setSuggestions] = useState<string[]>([])
@@ -41,6 +44,7 @@ const useCharacterSearch = (searchKey: string) => {
 
   const handleSuggestionClick = (suggestion: string) => {
     setSearchTerm(suggestion)
+    onSelect(suggestion)
     setIsOpen(false)
   }
 

@@ -8,6 +8,8 @@ interface ITypeFilters {
   name?: string
   status?: string
   gender?: string
+  type?: string
+  species?: string
 }
 
 const App: React.FC = () => {
