@@ -7,6 +7,7 @@
 :root {
   --family: 'Roboto', sans-serif;
   --fs-main: 16px;
+  --fs-subtitle: 18px;
   --fs-title: 23px;
   --fw-light: 300;
   --fw-normal: 500;

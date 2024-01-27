@@ -4,10 +4,16 @@ import { FilterSelect } from 'features/filterStatus'
 import { FilterGender } from 'features/filterGender'
 import { SearchType } from 'features/searchType'
 import { SearchSpecies } from 'features/searchSpecies'
+import styled from 'styled-components'
 
 interface ControlsProps {
   setFilters: (filters: any) => void
 }
+
+const Container = styled.div`
+  /* display: flex;
+  justify-content: space-between; */
+`
 
 const Controls: React.FC<ControlsProps> = ({ setFilters }) => {
   const [valueName, setValueName] = useState<string>('')
@@ -29,13 +35,13 @@ const Controls: React.FC<ControlsProps> = ({ setFilters }) => {
   }, [valueName, setFilters, valueStatus, valueGender, valueType, valueSpecies])
 
   return (
-    <div className="">
+    <Container>
       <Search valueSearch={valueName} setValueSearch={setValueName} />
       <FilterSelect setValueSearch={setValueStatus} />
       <FilterGender setValueSearch={setValueGender} />
       <SearchType setValueSearch={setValueType} />
       <SearchSpecies setValueSearch={setValueSpecies} />
-    </div>
+    </Container>
   )
 }
 
