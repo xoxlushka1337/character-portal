@@ -12,13 +12,18 @@ type Option = {
 }
 
 type CustomSelectProps = {
+  name: string
   options: Option[]
   onSelect: (selectedOption: string) => void
 }
 
-const CustomSelect: React.FC<CustomSelectProps> = ({ options, onSelect }) => {
+const CustomSelect: React.FC<CustomSelectProps> = ({
+  name,
+  options,
+  onSelect,
+}) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [selectedOption, setSelectedOption] = useState('Status')
+  const [selectedOption, setSelectedOption] = useState(name)
 
   const handleOptionClick = (value: string) => {
     setSelectedOption(value)

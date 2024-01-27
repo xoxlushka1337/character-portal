@@ -7,6 +7,7 @@ import { ListCards } from 'widgets/listCards'
 interface ITypeFilters {
   name?: string
   status?: string
+  gender?: string
 }
 
 const App: React.FC = () => {

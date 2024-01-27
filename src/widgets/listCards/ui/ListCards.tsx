@@ -38,6 +38,10 @@ const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
     console.log(charactersDataFilter)
   }
 
+  if (error) {
+    return <div className="">Nothing was found</div>
+  }
+
   return !isLoading ? (
     <Container>
       {charactersDataFilter.results.map((character) => (
