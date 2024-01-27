@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Search } from 'features/search'
 import { FilterSelect } from 'features/filterStatus'
 import { FilterGender } from 'features/filterGender'
+import { SearchType } from 'features/searchType'
 
 interface ControlsProps {
   setFilters: (filters: any) => void
@@ -35,6 +36,7 @@ const Controls: React.FC<ControlsProps> = ({ setFilters }) => {
       <Search valueSearch={valueName} setValueSearch={setValueName} />
       <FilterSelect setValueSearch={setValueStatus} />
       <FilterGender setValueSearch={setValueGender} />
+      <SearchType />
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { Character, CharactersData } from 'shared/model/type'
 
 export const charactersApi = createApi({
   reducerPath: 'charactersApi',
@@ -17,31 +18,34 @@ export const charactersApi = createApi({
         return `/character/?${queryString ? `${queryString}&` : ''}`
       },
     }),
-    // getAllCharacters: builder.query({
-    //   query: () => `/character`,
-    //   transformResponse: (response) => {
-    //     const allResults = response.results
+    getAllCharacters: builder.query({
+      query: () => `/character`,
+      transformResponse: (response: CharactersData) => {
+        const allResults = response.results
 
-    //     if (response.info.next) {
-    //       return getAllPages(response.info.next, allResults)
-    //     }
+        if (response.info.next) {
+          return getAllPages(response.info.next, allResults)
+        }
 
-    //     return allResults
-    //   },
-    // }),
+        return allResults
+      },
+    }),
   }),
 })
 
-// async function getAllPages(nextPageUrl, allResults) {
-//   const nextPageResponse = await fetch(nextPageUrl)
-//   const nextPageData = await nextPageResponse.json()
-//   const combinedResults = allResults.concat(nextPageData.results)
+async function getAllPages(
+  nextPageUrl: string,
+  allResults: Character[],
+): Promise<Character[]> {
+  const nextPageResponse = await fetch(nextPageUrl)
+  const nextPageData = await nextPageResponse.json()
+  const combinedResults = allResults.concat(nextPageData.results)
 
-//   if (nextPageData.info.next) {
-//     return getAllPages(nextPageData.info.next, combinedResults)
-//   }
+  if (nextPageData.info.next) {
+    return getAllPages(nextPageData.info.next, combinedResults)
+  }
+  return combinedResults
+}
 
-//   return combinedResults
-// }
-
-export const { useGetCharactersFilterQuery } = charactersApi
+export const { useGetCharactersFilterQuery, useGetAllCharactersQuery } =
+  charactersApi
