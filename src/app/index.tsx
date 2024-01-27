@@ -21,7 +21,6 @@ const App: React.FC = () => {
       <Header />
       <Container>
         <Controls setFilters={setFilters} />
-        {/* Уберите угловые скобки, так как тип уже указан в useState */}
         <ListCards filters={filters} />
       </Container>
     </div>
