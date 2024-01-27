@@ -1,16 +1,13 @@
 import React from 'react'
 import { Card } from 'entities/card'
-import {
-  useGetCharactersFilterQuery,
-  useGetCharactersQuery,
-} from 'shared/api/charactersApi'
-import { Character, CharactersData } from 'shared/model/type'
+import { useGetCharactersFilterQuery } from 'shared/api/charactersApi'
+import { CharactersData } from 'shared/model/type'
 import styled from 'styled-components'
 
 interface ListCardsProps {
   filters: {
     name?: string
-    status?: string // Добавьте другие свойства, если необходимо
+    status?: string
   }
 }
 
@@ -26,19 +23,13 @@ const Container = styled.div`
 
 const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
   const {
-    data: charactersData,
+    data: charactersDataFilter,
     error,
     isLoading,
-  } = useGetCharactersQuery('') as {
+  } = useGetCharactersFilterQuery(filters) as {
     data: CharactersData
     error?: any
     isLoading?: boolean
-  }
-
-  const { data: charactersDataFilter } = useGetCharactersFilterQuery(
-    filters,
-  ) as {
-    data: CharactersData
   }
 
   // const characters: Character[] = charactersData.results

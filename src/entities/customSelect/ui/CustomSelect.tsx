@@ -1,5 +1,3 @@
-// CustomSelect.tsx
-
 import React, { useState } from 'react'
 import {
   CustomSelectWrapper,

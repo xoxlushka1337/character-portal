@@ -11,6 +11,7 @@ interface ITypeFilters {
 
 const App: React.FC = () => {
   const [filters, setFilters] = useState<ITypeFilters>({})
+  console.log(filters)
 
   return (
     <div className="App">

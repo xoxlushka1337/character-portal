@@ -22,7 +22,7 @@ export const charactersApi = createApi({
           .filter((key) => options[key] !== undefined && options[key] !== null)
           .map((key) => `${key}=${options[key]}`)
           .join('&')
-        return `/character/?${queryString ? `${queryString}&` : ''}page=2`
+        return `/character/?${queryString ? `${queryString}&` : ''}`
       },
     }),
   }),

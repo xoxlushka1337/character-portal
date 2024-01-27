@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Search } from 'features/search'
-import { FilterSelect } from 'features/filterSelect'
+import { FilterSelect } from 'features/filterStatus'
 
 interface ControlsProps {
   setFilters: (filters: any) => void
@@ -8,6 +8,7 @@ interface ControlsProps {
 
 const Controls: React.FC<ControlsProps> = ({ setFilters }) => {
   const [valueName, setValueName] = useState<string>('')
+  const [valueStatus, setValueStatus] = useState<string>('')
 
   useEffect(() => {
     const filters: any = {}
@@ -16,13 +17,17 @@ const Controls: React.FC<ControlsProps> = ({ setFilters }) => {
       filters.name = valueName
     }
 
+    if (valueStatus) {
+      filters.status = valueStatus
+    }
+
     setFilters(filters)
-  }, [valueName, setFilters])
+  }, [valueName, setFilters, valueStatus])
 
   return (
     <div className="">
       <Search valueSearch={valueName} setValueSearch={setValueName} />
-      <FilterSelect />
+      <FilterSelect valueStatus={valueStatus} setValueStatus={setValueStatus} />
     </div>
   )
 }
