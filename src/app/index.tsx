@@ -17,7 +17,6 @@ interface ITypeFilters {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-
   gap: 50px;
 `
 
@@ -75,7 +74,6 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Header />
-
       <Container>
         <Wrapper>
           <ContainerFilter>

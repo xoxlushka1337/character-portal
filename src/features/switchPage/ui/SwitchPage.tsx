@@ -15,6 +15,10 @@ const ArrowButtonNext = styled.img`
     transition: 0.4s;
     transform: scale(1.1);
   }
+
+  @media (min-width: 716px) {
+    width: 60px;
+  }
 `
 
 const ArrowButtonPrevious = styled.img`
@@ -27,12 +31,17 @@ const ArrowButtonPrevious = styled.img`
     transition: 0.4s;
     transform: rotate(180deg) scale(1.1);
   }
+
+  @media (min-width: 716px) {
+    width: 60px;
+  }
 `
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
   gap: 50px;
+  margin-bottom: 50px;
 `
 
 const SwitchPage: React.FC<SwitchPageProps> = ({
