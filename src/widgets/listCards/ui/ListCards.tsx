@@ -22,7 +22,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   gap: 20px;
   @media (min-width: 767px) {
-    justify-content: space-between;
+    gap: 30px 70px;
   }
 `
 
