@@ -10,13 +10,15 @@ export const charactersApi = createApi({
   endpoints: (builder) => ({
     getCharactersFilter: builder.query({
       query: (options) => {
-        // Измените запрос, чтобы включить параметр страницы
         const queryString = Object.keys(options)
           .filter((key) => options[key] !== undefined && options[key] !== null)
           .map((key) => `${key}=${options[key]}`)
           .join('&')
         return `/character/?${queryString ? `${queryString}&` : ''}`
       },
+    }),
+    getCharacterId: builder.query({
+      query: (id) => `/character/${id}`,
     }),
     getAllCharacters: builder.query({
       query: () => `/character`,
@@ -47,5 +49,8 @@ async function getAllPages(
   return combinedResults
 }
 
-export const { useGetCharactersFilterQuery, useGetAllCharactersQuery } =
-  charactersApi
+export const {
+  useGetCharactersFilterQuery,
+  useGetAllCharactersQuery,
+  useGetCharacterIdQuery,
+} = charactersApi

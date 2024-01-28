@@ -1,39 +1,20 @@
 import React, { MouseEvent } from 'react'
-import styled from 'styled-components'
+import { useGetCharacterIdQuery } from 'shared/api/charactersApi'
+import { Character } from 'shared/model/type'
+import {
+  CharterImg,
+  CloseButton,
+  InfoItem,
+  Name,
+  Overlay,
+  PopupContainer,
+} from './PopupCard.styles'
 
 interface PopupCardProps {
   togglePopup: (id?: number) => void
   isPopupOpen: boolean
   selectedCharacterId: number | null
 }
-
-const PopupContainer = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  z-index: 1000;
-`
-
-const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-`
-
-const CloseButton = styled.span`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  font-size: 20px;
-`
 
 const PopupCard: React.FC<PopupCardProps> = ({
   togglePopup,
@@ -45,6 +26,16 @@ const PopupCard: React.FC<PopupCardProps> = ({
     togglePopup()
   }
 
+  const {
+    data: character,
+    error,
+    isLoading,
+  } = useGetCharacterIdQuery(selectedCharacterId) as {
+    data: Character
+    error?: any
+    isLoading: boolean
+  }
+
   return (
     <>
       {isPopupOpen && (
@@ -52,8 +43,28 @@ const PopupCard: React.FC<PopupCardProps> = ({
           <Overlay onClick={handleClick} />
           <PopupContainer>
             <CloseButton onClick={handleClick}>&times;</CloseButton>
-            <h2>This is a Popup</h2>
-            <p>{selectedCharacterId}</p>
+            {!isLoading && (
+              <>
+                <CharterImg src={character.image} alt={character.name} />
+                <div>
+                  <Name>{character.name}</Name>
+                  <InfoItem>
+                    <b>Status:</b> {character.status}
+                  </InfoItem>
+                  <InfoItem>
+                    <b>Species:</b> {character.species}
+                  </InfoItem>
+                  {character.type && (
+                    <InfoItem>
+                      <b>Type:</b> {character.type}
+                    </InfoItem>
+                  )}
+                  <InfoItem>
+                    <b>Location:</b> {character.location.name}
+                  </InfoItem>
+                </div>
+              </>
+            )}
           </PopupContainer>
         </>
       )}
