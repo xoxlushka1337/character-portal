@@ -18,7 +18,6 @@ const SelectSearch: React.FC<TypeSearchProps> = ({ searchKey, onSelect }) => {
     isOpen,
     searchTerm,
     suggestions,
-    isLoading,
     handleInputChange,
     handleSuggestionClick,
     filteredSuggestions,
@@ -34,14 +33,18 @@ const SelectSearch: React.FC<TypeSearchProps> = ({ searchKey, onSelect }) => {
       />
       {searchTerm && (
         <SuggestionsList isOpen={isOpen}>
-          {filteredSuggestions.map((suggestion, index) => (
-            <SuggestionItem
-              key={index}
-              onClick={() => handleSuggestionClick(suggestion)}
-            >
-              {suggestion}
-            </SuggestionItem>
-          ))}
+          {filteredSuggestions.length !== 0 ? (
+            filteredSuggestions.map((suggestion, index) => (
+              <SuggestionItem
+                key={index}
+                onClick={() => handleSuggestionClick(suggestion)}
+              >
+                {suggestion}
+              </SuggestionItem>
+            ))
+          ) : (
+            <SuggestionItem>Nothing was found</SuggestionItem>
+          )}
         </SuggestionsList>
       )}
     </SearchContainer>

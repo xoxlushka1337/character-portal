@@ -38,9 +38,16 @@ const ShowFiltersButton = styled.button`
 const ContainerFilter = styled.div`
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
   align-items: center;
+  gap: 10px 0px;
   width: 100%;
   margin-top: 70px;
+
+  @media (min-width: 512px) {
+    flex-direction: row;
+    gap: 0px;
+  }
 `
 
 const App: React.FC = () => {

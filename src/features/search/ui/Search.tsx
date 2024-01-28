@@ -19,12 +19,10 @@ const InputContainer = styled.label`
     align-items: center;
     border-radius: var(--radii-mini);
     width: 100%;
-    margin-bottom: 1.5rem;
     box-shadow: var(--shadow);
     color: var(--color-text);
 
     @media (min-width: 767px) {
-      margin-bottom: 0;
       width: 500px;
     }
   }
