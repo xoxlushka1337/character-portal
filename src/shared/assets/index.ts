@@ -1,7 +1,8 @@
 import rickMortyImage from './images/rick_morty.png'
-import arrow from './icons/arrow.svg'
+import arrowRight from './icons/arrow-right.svg'
+import arrowLeft from './icons/arrow-left.svg'
 import cross from './icons/cross.svg'
 import search from './icons/search.svg'
 import arrowTop from './icons/arrow-top.svg'
 
-export { rickMortyImage, arrow, cross, search, arrowTop }
+export { rickMortyImage, arrowRight, cross, search, arrowTop, arrowLeft }

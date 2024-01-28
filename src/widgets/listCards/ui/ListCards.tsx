@@ -73,10 +73,12 @@ const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
         isPopupOpen={isPopupOpen}
         selectedCharacterId={selectedCharacterId}
       />
-      {charactersDataFilter && charactersDataFilter.info.next && (
+      {charactersDataFilter && (
         <SwitchPage
           onNextPage={handleNextPage}
           onPreviousPage={handlePreviousPage}
+          hasNextPage={charactersDataFilter.info.next}
+          hasPreviousPage={charactersDataFilter.info.prev}
         />
       )}
     </>
