@@ -1,10 +1,10 @@
+// ListCards.tsx
 import React, { useState, useEffect } from 'react'
 import { Card } from 'entities/card'
-import { useGetCharactersFilterQuery } from 'shared/api/charactersApi'
-import { Character, CharactersData } from 'shared/model/type'
 import styled from 'styled-components'
 import { PopupCard } from 'widgets/popupCard'
-import { arrow, arrowTop } from 'shared/assets'
+import { SwitchPage } from 'features/switchPage'
+import { useCharactersData, usePagination } from '../lib'
 
 interface ListCardsProps {
   filters: {
@@ -26,15 +26,6 @@ const Container = styled.div`
   }
 `
 
-const ArrowRightButton = styled.img`
-  cursor: pointer;
-`
-
-const ArrowLeftButton = styled.img`
-  transform: rotate(180deg);
-  cursor: pointer;
-`
-
 const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
   const [isPopupOpen, setPopupOpen] = useState(false)
   const [selectedCharacterId, setSelectedCharacterId] = useState<number | null>(
@@ -46,40 +37,11 @@ const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
     setPopupOpen(!isPopupOpen)
   }
 
-  const [charactersData, setCharactersData] = useState<CharactersData | null>(
-    null,
+  const { currentPage, handleNextPage, handlePreviousPage } = usePagination()
+  const { charactersDataFilter, error, isLoading, refetch } = useCharactersData(
+    filters,
+    currentPage,
   )
-  const [currentPage, setCurrentPage] = useState(1)
-
-  const {
-    data: charactersDataFilter,
-    error,
-    isLoading,
-    refetch,
-  } = useGetCharactersFilterQuery({ ...filters, page: currentPage }) as {
-    data: CharactersData
-    error?: any
-    isLoading: boolean
-    refetch: () => void
-  }
-
-  useEffect(() => {
-    if (charactersDataFilter) {
-      setCharactersData(charactersDataFilter)
-    }
-  }, [charactersDataFilter])
-
-  const handleLoadMore = () => {
-    setCurrentPage((prevPage) => prevPage + 1)
-    // Сбросьте предыдущие данные
-    setCharactersData(null)
-  }
-
-  const handleLoadMore1 = () => {
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))
-    // Сбросьте предыдущие данные
-    setCharactersData(null)
-  }
 
   useEffect(() => {
     refetch()
@@ -91,9 +53,9 @@ const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
 
   return (
     <>
-      {!isLoading && charactersData && (
+      {!isLoading && charactersDataFilter && (
         <Container>
-          {charactersData.results.map((character: Character) => (
+          {charactersDataFilter.results.map((character: any) => (
             <Card
               key={character.id}
               img={character.image}
@@ -111,11 +73,11 @@ const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
         isPopupOpen={isPopupOpen}
         selectedCharacterId={selectedCharacterId}
       />
-      {charactersData && charactersData.info.next && (
-        <div className="">
-          <ArrowLeftButton src={arrow} alt="404" onClick={handleLoadMore1} />
-          <ArrowRightButton src={arrow} alt="404" onClick={handleLoadMore} />
-        </div>
+      {charactersDataFilter && charactersDataFilter.info.next && (
+        <SwitchPage
+          onNextPage={handleNextPage}
+          onPreviousPage={handlePreviousPage}
+        />
       )}
     </>
   )
