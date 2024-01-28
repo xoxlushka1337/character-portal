@@ -9,8 +9,20 @@ export const CustomSelectWrapper = styled.div`
 export const SelectHeader = styled.div`
   cursor: pointer;
   padding: 10px;
-  border: 1px solid #ccc;
-  background-color: #fff;
+  border: 4px solid var(--border-color);
+  outline: none;
+  font-size: var(--fs-main);
+  background-color: #59855d63;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  border-radius: var(--radii-mini);
+  width: 100%;
+  box-shadow: var(--shadow);
+
+  @media (min-width: 767px) {
+    width: 200px;
+  }
 `
 
 export const OptionsList = styled.ul<{ isOpen: boolean }>`
@@ -21,7 +33,8 @@ export const OptionsList = styled.ul<{ isOpen: boolean }>`
   top: calc(100% + 5px); /* Немного отступим от заголовка */
   left: 0;
   width: 100%;
-  background-color: #fff;
+  color: black;
+  background-color: var(--background-hints);
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};

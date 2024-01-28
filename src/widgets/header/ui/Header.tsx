@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { rickMortyImage } from 'shared/assets'
 
 const HeaderEl = styled.header`
-  background-color: var(--background);
+  background: var(--background);
   border-radius: var(--radii);
   box-shadow: var(--shadow);
   margin-top: 10px;

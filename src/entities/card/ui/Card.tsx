@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   text-align: center;
   cursor: pointer;
   transition: 0.4s;
+  box-shadow: var(--shadow);
 
   &:hover {
     transform: scale(0.94);

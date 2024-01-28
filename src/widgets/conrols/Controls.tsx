@@ -11,8 +11,10 @@ interface ControlsProps {
 }
 
 const Container = styled.div`
-  /* display: flex;
-  justify-content: space-between; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  justify-content: space-around;
 `
 
 const Controls: React.FC<ControlsProps> = ({ setFilters }) => {
@@ -37,10 +39,11 @@ const Controls: React.FC<ControlsProps> = ({ setFilters }) => {
   return (
     <Container>
       <Search valueSearch={valueName} setValueSearch={setValueName} />
-      <FilterSelect setValueSearch={setValueStatus} />
-      <FilterGender setValueSearch={setValueGender} />
+
       <SearchType setValueSearch={setValueType} />
       <SearchSpecies setValueSearch={setValueSpecies} />
+      <FilterGender setValueSearch={setValueGender} />
+      <FilterSelect setValueSearch={setValueStatus} />
     </Container>
   )
 }

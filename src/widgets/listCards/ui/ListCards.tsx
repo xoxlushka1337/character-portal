@@ -20,7 +20,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-
+  gap: 20px;
   @media (min-width: 767px) {
     justify-content: space-between;
   }
