@@ -7,9 +7,7 @@ interface SearchProps {
 }
 
 const InputContainer = styled.label`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  /* flex-direction: column; */
 
   input {
     border: 4px solid var(--border-color);
@@ -27,7 +25,7 @@ const InputContainer = styled.label`
 
     @media (min-width: 767px) {
       margin-bottom: 0;
-      width: 280px;
+      width: 500px;
     }
   }
 `

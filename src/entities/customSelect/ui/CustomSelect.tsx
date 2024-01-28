@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {
+  CustomSelectContainer,
   CustomSelectWrapper,
   SelectHeader,
   OptionsList,
@@ -36,19 +37,23 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   }
 
   return (
-    <CustomSelectWrapper>
-      <SelectHeader onClick={toggleSelect}>{`${selectedOption}`}</SelectHeader>
-      <OptionsList isOpen={isOpen}>
-        {options.map((option) => (
-          <OptionItem
-            key={option.value}
-            onClick={() => handleOptionClick(option.value)}
-          >
-            {option.label}
-          </OptionItem>
-        ))}
-      </OptionsList>
-    </CustomSelectWrapper>
+    <CustomSelectContainer>
+      <CustomSelectWrapper>
+        <SelectHeader
+          onClick={toggleSelect}
+        >{`${selectedOption}`}</SelectHeader>
+        <OptionsList isOpen={isOpen}>
+          {options.map((option) => (
+            <OptionItem
+              key={option.value}
+              onClick={() => handleOptionClick(option.value)}
+            >
+              {option.label}
+            </OptionItem>
+          ))}
+        </OptionsList>
+      </CustomSelectWrapper>
+    </CustomSelectContainer>
   )
 }
 

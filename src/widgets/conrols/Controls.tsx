@@ -7,7 +7,11 @@ import { SearchSpecies } from 'features/searchSpecies'
 import styled from 'styled-components'
 
 interface ControlsProps {
-  setFilters: (filters: any) => void
+  setValueName: (value: string) => void
+  setValueStatus: (value: string) => void
+  setValueGender: (value: string) => void
+  setValueType: (value: string) => void
+  setValueSpecies: (value: string) => void
 }
 
 const Container = styled.div`
@@ -17,29 +21,15 @@ const Container = styled.div`
   justify-content: space-around;
 `
 
-const Controls: React.FC<ControlsProps> = ({ setFilters }) => {
-  const [valueName, setValueName] = useState<string>('')
-  const [valueStatus, setValueStatus] = useState<string>('')
-  const [valueGender, setValueGender] = useState<string>('')
-  const [valueType, setValueType] = useState<string>('')
-  const [valueSpecies, setValueSpecies] = useState<string>('')
-
-  useEffect(() => {
-    const filters = {
-      ...(valueName && { name: valueName }),
-      ...(valueStatus && { status: valueStatus }),
-      ...(valueGender && { gender: valueGender }),
-      ...(valueType && { type: valueType }),
-      ...(valueSpecies && { species: valueSpecies }),
-    }
-
-    setFilters(filters)
-  }, [valueName, setFilters, valueStatus, valueGender, valueType, valueSpecies])
-
+const Controls: React.FC<ControlsProps> = ({
+  setValueName,
+  setValueStatus,
+  setValueGender,
+  setValueType,
+  setValueSpecies,
+}) => {
   return (
     <Container>
-      <Search valueSearch={valueName} setValueSearch={setValueName} />
-
       <SearchType setValueSearch={setValueType} />
       <SearchSpecies setValueSearch={setValueSpecies} />
       <FilterGender setValueSearch={setValueGender} />
