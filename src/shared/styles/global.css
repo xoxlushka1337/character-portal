@@ -34,5 +34,4 @@ body {
   font-size: var(--fs-main);
   background: linear-gradient(113deg, #1273aa 0%, rgba(3, 40, 18, 0.71) 100%);
   color: var(--color-text);
-  height: 100vh;
 }

@@ -1,14 +1,10 @@
 import { Container } from 'shared/ui'
 import styled from 'styled-components'
-
-// import rickMortyImage from '../../shared/assets/images/rick_morty.png'
 import { rickMortyImage } from 'shared/assets'
 
 const HeaderEl = styled.header`
   background: var(--background);
-  /* border-radius: var(--radii); */
   box-shadow: var(--shadow);
-  /* margin-top: 10px; */
 `
 
 const Wrapper = styled.div`
@@ -18,15 +14,23 @@ const Wrapper = styled.div`
 `
 
 const IconHeader = styled.img`
-  width: 150px;
+  width: 100px;
+
+  @media (min-width: 449px) {
+    width: 130px;
+  }
 `
 
 const Title = styled.div`
-  font-size: var(--fs-title);
+  font-size: 18px;
   text-decoration: none;
   font-weight: var(--fw-normal);
   color: var(--color-text);
   letter-spacing: 1.15px;
+
+  @media (min-width: 449px) {
+    font-size: var(--fs-title);
+  }
 `
 
 export const Header = () => {

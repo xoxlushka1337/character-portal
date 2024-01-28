@@ -21,9 +21,19 @@ const Container = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
+  min-height: calc(100vh - 400px);
   @media (min-width: 767px) {
     gap: 30px 70px;
   }
+`
+
+const Error = styled.div`
+  height: 100vh;
+  text-align: center;
+  font-size: var(--fs-subtitle);
+`
+const WrapperList = styled.div`
+  height: 100%;
 `
 
 const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
@@ -48,12 +58,16 @@ const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
   }, [currentPage, refetch])
 
   if (error) {
-    return <div className="">Nothing was found</div>
+    return (
+      <Error>
+        <div className="">Nothing was found</div>
+      </Error>
+    )
   }
 
   return (
     <>
-      {!isLoading && charactersDataFilter && (
+      {!isLoading ? (
         <Container>
           {charactersDataFilter.results.map((character: any) => (
             <Card
@@ -67,6 +81,8 @@ const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
             />
           ))}
         </Container>
+      ) : (
+        <div>Loading...</div>
       )}
       <PopupCard
         togglePopup={togglePopup}
