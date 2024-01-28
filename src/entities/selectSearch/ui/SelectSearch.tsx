@@ -28,7 +28,7 @@ const SelectSearch: React.FC<TypeSearchProps> = ({ searchKey, onSelect }) => {
     <SearchContainer>
       <SearchInput
         type="search"
-        placeholder={`Search ${searchKey}...`}
+        placeholder={`🔎 Search ${searchKey}...`}
         value={searchTerm}
         onChange={handleInputChange}
       />

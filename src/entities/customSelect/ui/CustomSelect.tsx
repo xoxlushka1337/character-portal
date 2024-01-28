@@ -5,7 +5,10 @@ import {
   SelectHeader,
   OptionsList,
   OptionItem,
+  ArrowIcon,
 } from './CustomSelect.styles'
+
+import { arrowTop } from 'shared/assets'
 
 type Option = {
   label: string
@@ -23,7 +26,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   options,
   onSelect,
 }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   const [selectedOption, setSelectedOption] = useState(name)
 
   const handleOptionClick = (value: string) => {
@@ -39,9 +42,10 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   return (
     <CustomSelectContainer>
       <CustomSelectWrapper>
-        <SelectHeader
-          onClick={toggleSelect}
-        >{`${selectedOption}`}</SelectHeader>
+        <SelectHeader onClick={toggleSelect}>
+          {`${selectedOption}`}
+          <ArrowIcon src={arrowTop} alt="404" isOpen={isOpen} />
+        </SelectHeader>
         <OptionsList isOpen={isOpen}>
           {options.map((option) => (
             <OptionItem

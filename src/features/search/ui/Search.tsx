@@ -35,7 +35,7 @@ const Search: React.FC<SearchProps> = ({ valueSearch, setValueSearch }) => {
     <InputContainer>
       <input
         type="search"
-        placeholder="Filter by name..."
+        placeholder="🔎 Filter by name..."
         onChange={(e) => setValueSearch(e.target.value)}
         value={valueSearch}
       />

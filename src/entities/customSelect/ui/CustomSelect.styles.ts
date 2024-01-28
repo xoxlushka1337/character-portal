@@ -10,6 +10,9 @@ export const CustomSelectWrapper = styled.div`
 `
 
 export const SelectHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
   padding: 10px;
   border: 4px solid var(--border-color);
@@ -22,16 +25,24 @@ export const SelectHeader = styled.div`
   border-radius: var(--radii-mini);
   width: 100%;
   box-shadow: var(--shadow);
+  position: relative;
 
   @media (min-width: 767px) {
     width: 200px;
   }
 `
 
+export const ArrowIcon = styled.img<{ isOpen: boolean }>`
+  width: 20px;
+  font-size: 12px;
+  margin-left: 5px;
+  transform: ${({ isOpen }) => (isOpen ? 'none' : 'rotate(180deg)')};
+  transition: transform 0.3s ease;
+`
+
 export const OptionsList = styled.ul<{ isOpen: boolean }>`
   list-style: none;
   padding: 0;
-  margin: 0;
   margin: 0;
   position: absolute;
   top: calc(100% + 5px);
@@ -54,6 +65,7 @@ export const OptionsList = styled.ul<{ isOpen: boolean }>`
 export const OptionItem = styled.li`
   cursor: pointer;
   padding: 5px;
+
   &:hover {
     background-color: #f0f0f0;
   }

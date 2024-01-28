@@ -17,23 +17,28 @@ interface ITypeFilters {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+
   gap: 50px;
 `
 
 const ShowFiltersButton = styled.button`
-  margin-top: 10px;
+  font-size: var(--fs-main);
   padding: 8px 16px;
+  width: 150px;
+  height: 50px;
   background-color: var(--background-accent);
   color: white;
   border: none;
   border-radius: var(--radii);
+  box-shadow: var(--shadow);
+  letter-spacing: 0.5px;
   cursor: pointer;
 `
 
 const ContainerFilter = styled.div`
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 100%;
   margin-top: 70px;
 `
