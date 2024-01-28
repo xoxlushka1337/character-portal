@@ -6,27 +6,27 @@ import { rickMortyImage } from 'shared/assets'
 
 const HeaderEl = styled.header`
   background: var(--background);
-  border-radius: var(--radii);
+  /* border-radius: var(--radii); */
   box-shadow: var(--shadow);
-  margin-top: 10px;
+  /* margin-top: 10px; */
 `
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 0;
 `
 
 const IconHeader = styled.img`
-  width: 200px;
+  width: 150px;
 `
 
 const Title = styled.div`
   font-size: var(--fs-title);
   text-decoration: none;
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-normal);
   color: var(--color-text);
+  letter-spacing: 1.15px;
 `
 
 export const Header = () => {
@@ -34,7 +34,7 @@ export const Header = () => {
     <HeaderEl>
       <Container>
         <Wrapper>
-          <Title>Find your favorite character</Title>
+          <Title>Find your favorite character...</Title>
           <IconHeader src={rickMortyImage} alt="404" />
         </Wrapper>
       </Container>
