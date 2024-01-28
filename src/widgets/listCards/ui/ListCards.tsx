@@ -4,6 +4,7 @@ import { useGetCharactersFilterQuery } from 'shared/api/charactersApi'
 import { Character, CharactersData } from 'shared/model/type'
 import styled from 'styled-components'
 import { PopupCard } from 'widgets/popupCard'
+import { arrow, arrowTop } from 'shared/assets'
 
 interface ListCardsProps {
   filters: {
@@ -25,10 +26,13 @@ const Container = styled.div`
   }
 `
 
-const LoadMoreButton = styled.div`
+const ArrowRightButton = styled.img`
   cursor: pointer;
-  color: blue;
-  margin-top: 20px;
+`
+
+const ArrowLeftButton = styled.img`
+  transform: rotate(180deg);
+  cursor: pointer;
 `
 
 const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
@@ -109,8 +113,8 @@ const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
       />
       {charactersData && charactersData.info.next && (
         <div className="">
-          <div onClick={handleLoadMore1}>Назад</div>
-          <LoadMoreButton onClick={handleLoadMore}>Следующая</LoadMoreButton>
+          <ArrowLeftButton src={arrow} alt="404" onClick={handleLoadMore1} />
+          <ArrowRightButton src={arrow} alt="404" onClick={handleLoadMore} />
         </div>
       )}
     </>
