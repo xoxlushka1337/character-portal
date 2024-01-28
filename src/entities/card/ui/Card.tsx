@@ -43,11 +43,22 @@ interface CardProps {
   gender: string
   status: string
   type: string
+  onClick: any
 }
 
-const Card: React.FC<CardProps> = ({ img, name, gender, status, type }) => {
+const Card: React.FC<CardProps> = ({
+  img,
+  name,
+  gender,
+  status,
+  type,
+  onClick,
+}) => {
+  const handleClick = () => {
+    onClick() // Вызываем переданный обработчик клика
+  }
   return (
-    <Wrapper>
+    <Wrapper onClick={handleClick}>
       <Img src={img} alt="404" />
       <Text>
         <Name>{name}</Name>

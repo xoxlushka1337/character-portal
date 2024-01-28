@@ -3,6 +3,7 @@ import { Card } from 'entities/card'
 import { useGetCharactersFilterQuery } from 'shared/api/charactersApi'
 import { Character, CharactersData } from 'shared/model/type'
 import styled from 'styled-components'
+import { PopupCard } from 'widgets/popupCard'
 
 interface ListCardsProps {
   filters: {
@@ -31,6 +32,16 @@ const LoadMoreButton = styled.div`
 `
 
 const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
+  const [isPopupOpen, setPopupOpen] = useState(false)
+  const [selectedCharacterId, setSelectedCharacterId] = useState<number | null>(
+    null,
+  )
+
+  const togglePopup = (id?: number) => {
+    setSelectedCharacterId(isPopupOpen ? null : id || null)
+    setPopupOpen(!isPopupOpen)
+  }
+
   const [charactersData, setCharactersData] = useState<CharactersData | null>(
     null,
   )
@@ -78,19 +89,24 @@ const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
     <>
       {!isLoading && charactersData && (
         <Container>
-          {/* Используйте charactersData.results, чтобы избежать дублирования */}
           {charactersData.results.map((character: Character) => (
             <Card
-              key={character.id} // Используйте уникальный ключ, например, id
+              key={character.id}
               img={character.image}
               name={character.name}
               gender={character.gender}
               status={character.status}
               type={character.type}
+              onClick={() => togglePopup(character.id)}
             />
           ))}
         </Container>
       )}
+      <PopupCard
+        togglePopup={togglePopup}
+        isPopupOpen={isPopupOpen}
+        selectedCharacterId={selectedCharacterId}
+      />
       {charactersData && charactersData.info.next && (
         <div className="">
           <div onClick={handleLoadMore1}>Назад</div>
