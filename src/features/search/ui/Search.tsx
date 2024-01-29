@@ -7,8 +7,6 @@ interface SearchProps {
 }
 
 const InputContainer = styled.label`
-  /* flex-direction: column; */
-
   input {
     border: 4px solid var(--border-color);
     outline: none;
