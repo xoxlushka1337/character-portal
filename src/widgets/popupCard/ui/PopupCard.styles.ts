@@ -6,10 +6,16 @@ export const PopupContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #e5e5e5;
-  padding: 20px;
+  padding: 35px 20px 0;
   z-index: 1000;
   border-radius: var(--radii);
   color: black;
+  width: 100%;
+
+  @media (min-width: 460px) {
+    width: 429px;
+    padding: 35px;
+  }
 `
 
 export const Overlay = styled.div`
@@ -22,16 +28,24 @@ export const Overlay = styled.div`
   z-index: 999;
 `
 
-export const CloseButton = styled.span`
+export const CloseButton = styled.img`
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 13px;
   cursor: pointer;
-  font-size: 20px;
+  width: 30px;
+  opacity: 0.6;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 1;
+    transition: 0.3s;
+  }
 `
 
 export const CharterImg = styled.img`
   border-radius: var(--radii);
+  width: 100%;
 `
 
 export const Name = styled.h2`

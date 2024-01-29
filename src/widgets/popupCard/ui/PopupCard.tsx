@@ -1,6 +1,7 @@
 import React, { MouseEvent } from 'react'
 import { useGetCharacterIdQuery } from 'shared/api/charactersApi'
 import { Character } from 'shared/model/type'
+import { cross } from 'shared/assets'
 import {
   CharterImg,
   CloseButton,
@@ -36,40 +37,38 @@ const PopupCard: React.FC<PopupCardProps> = ({
     isLoading: boolean
   }
 
-  return (
+  const characterInfo = character
+    ? [
+        { label: 'Status', value: character.status },
+        { label: 'Species', value: character.species },
+        { label: 'Type', value: character.type },
+        { label: 'Origin', value: character.origin.name },
+        { label: 'Location', value: character.location.name },
+      ].filter(Boolean)
+    : []
+
+  return isPopupOpen ? (
     <>
-      {isPopupOpen && (
-        <>
-          <Overlay onClick={handleClick} />
-          <PopupContainer>
-            <CloseButton onClick={handleClick}>&times;</CloseButton>
-            {!isLoading && (
-              <>
-                <CharterImg src={character.image} alt={character.name} />
-                <div>
-                  <Name>{character.name}</Name>
-                  <InfoItem>
-                    <b>Status:</b> {character.status}
-                  </InfoItem>
-                  <InfoItem>
-                    <b>Species:</b> {character.species}
-                  </InfoItem>
-                  {character.type && (
-                    <InfoItem>
-                      <b>Type:</b> {character.type}
-                    </InfoItem>
-                  )}
-                  <InfoItem>
-                    <b>Location:</b> {character.location.name}
-                  </InfoItem>
-                </div>
-              </>
-            )}
-          </PopupContainer>
-        </>
-      )}
+      <Overlay onClick={handleClick} />
+      <PopupContainer>
+        <CloseButton src={cross} onClick={handleClick}></CloseButton>
+        {!isLoading && character ? (
+          <>
+            <CharterImg src={character.image} alt={character.name} />
+            <div>
+              <Name>{character.name}</Name>
+              {characterInfo.map((info, index) => (
+                <InfoItem key={index}>
+                  <b>{info.label}:</b>
+                  {info.value.length > 0 ? info.value : '-'}
+                </InfoItem>
+              ))}
+            </div>
+          </>
+        ) : null}
+      </PopupContainer>
     </>
-  )
+  ) : null
 }
 
 export default PopupCard

@@ -32,9 +32,6 @@ const Error = styled.div`
   text-align: center;
   font-size: var(--fs-subtitle);
 `
-const WrapperList = styled.div`
-  height: 100%;
-`
 
 const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
   const [isPopupOpen, setPopupOpen] = useState(false)
