@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Search } from 'features/search'
-import { FilterSelect } from 'features/filterStatus'
+import { FilterStatus } from 'features/filterStatus'
 import { FilterGender } from 'features/filterGender'
 import { SearchType } from 'features/searchType'
 import { SearchSpecies } from 'features/searchSpecies'
@@ -33,7 +32,7 @@ const Controls: React.FC<ControlsProps> = ({
       <SearchType setValueSearch={setValueType} />
       <SearchSpecies setValueSearch={setValueSpecies} />
       <FilterGender setValueSearch={setValueGender} />
-      <FilterSelect setValueSearch={setValueStatus} />
+      <FilterStatus setValueSearch={setValueStatus} />
     </Container>
   )
 }

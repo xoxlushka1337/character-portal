@@ -2,7 +2,7 @@ import { Search } from 'features/search'
 import React, { useEffect, useState } from 'react'
 import { Container } from 'shared/ui'
 import styled from 'styled-components'
-import { Controls } from 'widgets/conrols'
+import { Controls } from 'widgets/controls'
 import { Header } from 'widgets/header'
 import { ListCards } from 'widgets/listCards'
 
@@ -49,7 +49,7 @@ const ContainerFilter = styled.div`
   }
 `
 
-const App: React.FC = () => {
+const HomePages = () => {
   const [filters, setFilters] = useState<ITypeFilters>({})
   const [showFilters, setShowFilters] = useState(false)
 
@@ -98,4 +98,4 @@ const App: React.FC = () => {
   )
 }
 
-export default App
+export default HomePages

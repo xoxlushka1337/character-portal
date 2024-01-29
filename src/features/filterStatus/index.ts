@@ -1,3 +1,3 @@
-import FilterSelect from './ui/FilterStatus'
+import FilterStatus from './ui/FilterStatus'
 
-export { FilterSelect }
+export { FilterStatus }

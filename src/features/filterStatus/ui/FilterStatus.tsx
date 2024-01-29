@@ -11,7 +11,7 @@ const options = [
   { label: 'All', value: 'All' },
 ]
 
-const FilterSelect: React.FC<SearchProps> = ({ setValueSearch }) => {
+const FilterStatus: React.FC<SearchProps> = ({ setValueSearch }) => {
   const handleSelect = (selectedValue: string) => {
     console.log('Selected value:', selectedValue)
     if (selectedValue !== 'All') {
@@ -28,4 +28,4 @@ const FilterSelect: React.FC<SearchProps> = ({ setValueSearch }) => {
   )
 }
 
-export default FilterSelect
+export default FilterStatus
