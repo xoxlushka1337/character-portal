@@ -30,7 +30,9 @@ const Container = styled.div`
 const Error = styled.div`
   height: 100vh;
   text-align: center;
-  font-size: var(--fs-subtitle);
+  font-size: var(--fs-title);
+  font-weight: var(--fw-normal);
+  letter-spacing: 1px;
 `
 
 const ListCards: React.FC<ListCardsProps> = ({ filters }) => {
