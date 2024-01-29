@@ -1,10 +1,10 @@
+import { HomePages } from 'pages/homePages'
 import React from 'react'
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <h1>1</h1>
-      123456
+      <HomePages />
     </div>
   )
 }
