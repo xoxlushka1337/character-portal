@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Добро пожаловать на "Character Portal"! 
+Этот веб-сайт создан с использованием современных технологий веб-разработки, включая React.js, Styled Components и TypeScript. Для эффективной работы с внешними данными и взаимодействия с API я использовала библиотеку RTK Query. Также в проекте я следовала архитектурной методологии Feature-Sliced Design (FSD), что способствует легкости в разработке, поддержке и масштабировании функциональных модулей. 
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
