@@ -26,14 +26,48 @@ const InputContainer = styled.label`
   }
 `
 
+// const Search: React.FC<SearchProps> = ({ valueSearch, setValueSearch }) => {
+//   return (
+//     <InputContainer>
+//       <input
+//         type="search"
+//         placeholder="🔎 Filter by name..."
+//         onChange={(e) => setValueSearch(e.target.value)}
+//         value={valueSearch}
+//       />
+//     </InputContainer>
+//   )
+// }
+
+// export default Search
 const Search: React.FC<SearchProps> = ({ valueSearch, setValueSearch }) => {
+  const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | null>(
+    null,
+  )
+  const [value, setValue] = useState('')
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value
+
+    if (searchTimeout) {
+      clearTimeout(searchTimeout)
+    }
+
+    const timeoutId = setTimeout(() => {
+      setValueSearch(newValue)
+    }, 500)
+
+    setSearchTimeout(timeoutId)
+    setValue(newValue)
+  }
+
   return (
     <InputContainer>
       <input
         type="search"
         placeholder="🔎 Filter by name..."
-        onChange={(e) => setValueSearch(e.target.value)}
-        value={valueSearch}
+        onChange={handleInputChange}
+        value={value}
       />
     </InputContainer>
   )
