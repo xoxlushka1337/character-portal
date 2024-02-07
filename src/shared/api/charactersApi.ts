@@ -16,6 +16,7 @@ export const charactersApi = createApi({
           .join('&')
         return `/character/?${queryString ? `${queryString}&` : ''}`
       },
+      keepUnusedDataFor: 3600,
     }),
     getCharacterId: builder.query({
       query: (id) => `/character/${id}`,
